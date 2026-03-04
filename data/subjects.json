@@ -25,5 +25,14 @@
     "file": "data/historia-polska.json",
     "lang": "pl",
     "question": "Podaj odpowiedź"
-  }
+  },
+    {
+    "id": "angielski-1.12",
+    "name": "Angielski – 1.12",
+    "emoji": "🤠",
+    "desc": "Słownictwo z działu 1",
+    "file": "data/angielski-1.12.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
+  },
 ]
