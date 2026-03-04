@@ -18,15 +18,6 @@
     "question": "Przetłumacz na angielski"
   },
   {
-    "id": "niemiecki-podstawy",
-    "name": "Niemiecki – Podstawy",
-    "emoji": "🇩🇪",
-    "desc": "Podstawowe słówka po niemiecku",
-    "file": "data/niemiecki-podstawy.json",
-    "lang": "de",
-    "question": "Przetłumacz na niemiecki"
-  },
-  {
     "id": "niemiecki-einkaufen",
     "name": "Niemiecki – Einkaufen",
     "emoji": "🛍️",
