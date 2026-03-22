@@ -38,7 +38,7 @@
     {
     "id": "angielski-zywienie",
     "name": "Angielski – Żywienie",
-    "emoji": 🍓",
+    "emoji": "🍓",
     "desc": "Artykuły spożywcze, owoce, diety",
     "file": "data/angielski-zywienie.json",
     "lang": "en",
