@@ -61,5 +61,14 @@
     "file": "data/irregular-verbs.json",
     "lang": "en",
     "question": "Wpisz 3 formy"
+  },
+    {
+    "id": "kapitel-1",
+    "name": "Niemiecki - Wort Effektiv",
+    "emoji": "🐎",
+    "desc": "Plany, szkolne problemy, kursy, szkoła dawniej i dziś",
+    "file": "data/niemiecki-kapitel-1.json",
+    "lang": "de",
+    "question": "Przetłumacz na niemiecki"
   }
 ]
