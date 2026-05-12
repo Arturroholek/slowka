@@ -1,91 +1,98 @@
 <!DOCTYPE html>
 <html lang="pl">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Quiz</title>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Quiz</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800;900&family=DM+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="container">
+  <div class="container">
 
-  <header>
-    <div class="logo" id="logoBtn">słówka<span>.</span></div>
-    <div class="progress-wrap">
-      <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
-      <span class="progress-label" id="progressLabel"></span>
-    </div>
-    <div class="score-badge">✓ <b id="scoreDisplay">0</b></div>
-  </header>
-
-  <!-- SCREEN 1: SUBJECT PICKER -->
-  <div id="screenSubject" class="screen active">
-    <p class="picker-title">Wybierz dział</p>
-    <p class="picker-subtitle">ładowanie słówek z pliku JSON</p>
-    <div class="subject-grid" id="subjectGrid">
-      <div class="loading">Ładowanie działów…</div>
-    </div>
-  </div>
-
-  <!-- SCREEN 2: CATEGORY PICKER -->
-  <div id="screenPicker" class="screen">
-    <button class="section-back" id="backToSubjects">← Działy</button>
-    <p class="picker-title" id="pickerTitle">Wybierz kategorię</p>
-    <p class="picker-subtitle" id="pickerSubtitle">lub zagraj wszystkie naraz</p>
-    <div class="cat-grid" id="catGrid"></div>
-    <button class="all-btn" id="allBtn">▶ Wszystkie słówka</button>
-  </div>
-
-  <!-- SCREEN 3: QUIZ -->
-  <div id="screenQuiz" class="screen">
-    <div class="card">
-      <div class="quiz-cat-header">
-        <span class="quiz-cat-label">Kategoria</span>
-        <span class="quiz-cat-name" id="quizCatName"></span>
+    <header>
+      <div class="logo" id="logoBtn">słówka<span>.</span></div>
+      <div class="progress-wrap">
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill" style="width:0%"></div>
+        </div>
+        <span class="progress-label" id="progressLabel"></span>
       </div>
-      <div id="roundBadge" class="round-badge" style="display:none">Powtórka błędów</div>
-      <div class="card-hint" id="cardHint">Przetłumacz</div>
-      <div class="word-display" id="wordDisplay">-</div>
-      <div class="streaks" id="streaks"></div>
-      <div class="input-row">
-        <input type="text" class="answer-input" id="answerInput" placeholder="wpisz odpowiedź..."
-          autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
-        <button class="submit-btn" id="submitBtn">OK</button>
-      </div>
-      <!-- UMLAUT BAR -->
-      <div class="umlaut-bar" id="umlautBar">
-        <button class="umlaut-btn" data-char="ä">ä</button>
-        <button class="umlaut-btn" data-char="ö">ö</button>
-        <button class="umlaut-btn" data-char="ü">ü</button>
-        <button class="umlaut-btn" data-char="Ä">Ä</button>
-        <button class="umlaut-btn" data-char="Ö">Ö</button>
-        <button class="umlaut-btn" data-char="Ü">Ü</button>
-        <button class="umlaut-btn" data-char="ß">ß</button>
-      </div>
-      <div class="feedback" id="feedback"></div>
-      <div class="action-row">
-        <button class="next-btn" id="nextBtn">Następne →</button>
-        <button class="back-btn" id="backBtn">↩ Kategorie</button>
+      <div class="score-badge">✓ <b id="scoreDisplay">0</b></div>
+    </header>
+
+    <!-- SCREEN 1: SUBJECT PICKER -->
+    <div id="screenSubject" class="screen active">
+      <p class="picker-title">Wybierz dział</p>
+      <p class="picker-subtitle">ładowanie słówek z pliku JSON</p>
+      <div class="subject-grid" id="subjectGrid">
+        <div class="loading">Ładowanie działów…</div>
       </div>
     </div>
-  </div>
 
-  <!-- SCREEN 4: RESULTS -->
-  <div id="screenResults" class="screen">
-    <div class="card">
-      <div class="results-inner">
-        <div class="results-emoji" id="resultsEmoji">🎉</div>
-        <div class="results-title">Koniec!</div>
-        <div class="results-cat" id="resultsCat"></div>
-        <div class="results-score" id="finalScore"></div>
-        <div class="results-detail" id="resultsDetail"></div>
-        <div class="results-actions" id="resultsActions"></div>
+    <!-- SCREEN 2: CATEGORY PICKER -->
+    <div id="screenPicker" class="screen">
+      <button class="section-back" id="backToSubjects">← Działy</button>
+      <p class="picker-title" id="pickerTitle">Wybierz kategorię</p>
+      <p class="picker-subtitle" id="pickerSubtitle">lub zagraj wszystkie naraz</p>
+      <div class="cat-grid" id="catGrid"></div>
+      <button class="all-btn" id="allBtn">▶ Wszystkie słówka</button>
+    </div>
+
+    <!-- SCREEN 3: QUIZ -->
+    <div id="screenQuiz" class="screen">
+      <div class="card">
+        <div class="quiz-cat-header">
+          <span class="quiz-cat-label">Kategoria</span>
+          <span class="quiz-cat-name" id="quizCatName"></span>
+        </div>
+        <div id="roundBadge" class="round-badge" style="display:none">Powtórka błędów</div>
+        <div class="card-hint" id="cardHint">Przetłumacz</div>
+        <div class="word-display" id="wordDisplay">-</div>
+        <div class="streaks" id="streaks"></div>
+        <div class="input-row">
+          <input type="text" class="answer-input" id="answerInput" placeholder="wpisz odpowiedź..." autocomplete="off"
+            autocorrect="off" autocapitalize="off" spellcheck="false">
+          <button class="submit-btn" id="submitBtn">OK</button>
+        </div>
+        <!-- UMLAUT BAR -->
+        <div class="umlaut-bar" id="umlautBar">
+          <button class="umlaut-btn" data-char="ä">ä</button>
+          <button class="umlaut-btn" data-char="ö">ö</button>
+          <button class="umlaut-btn" data-char="ü">ü</button>
+          <button class="umlaut-btn" data-char="Ä">Ä</button>
+          <button class="umlaut-btn" data-char="Ö">Ö</button>
+          <button class="umlaut-btn" data-char="Ü">Ü</button>
+          <button class="umlaut-btn" data-char="ß">ß</button>
+        </div>
+        <div class="feedback" id="feedback"></div>
+        <div class="action-row">
+          <button class="next-btn" id="nextBtn">Następne →</button>
+          <button class="back-btn" id="backBtn">↩ Kategorie</button>
+        </div>
       </div>
     </div>
-  </div>
 
-</div>
-<script src="script.js"></script>
+    <!-- SCREEN 4: RESULTS -->
+    <div id="screenResults" class="screen">
+      <div class="card">
+        <div class="results-inner">
+          <div class="results-emoji" id="resultsEmoji">🎉</div>
+          <div class="results-title">Koniec!</div>
+          <div class="results-cat" id="resultsCat"></div>
+          <div class="results-score" id="finalScore"></div>
+          <div class="results-detail" id="resultsDetail"></div>
+          <div class="results-actions" id="resultsActions"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="script.js"></script>
 </body>
+
 </html>

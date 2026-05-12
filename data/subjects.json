@@ -70,5 +70,14 @@
     "file": "data/niemiecki-kapitel-1.json",
     "lang": "de",
     "question": "Przetłumacz na niemiecki"
-  }
+  },
+  {
+  "id": "angielski-2-finding-your-niche",
+  "name": "Angielski – 2. Finding Your Niche",
+  "emoji": "🎯",
+  "desc": "Kariera, marka osobista, praca, oszustwa, profil zawodowy",
+  "file": "data/angielski-2-finding-your-niche.json",
+  "lang": "en",
+  "question": "Przetłumacz na angielski"
+}
 ]
