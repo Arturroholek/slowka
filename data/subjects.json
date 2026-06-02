@@ -88,5 +88,14 @@
   "file": "data/angielski-podrozowanie.json",
   "lang": "en",
   "question": "Przetłumacz na angielski"
-}
+},
+  {
+    "id": "niemiecki-geraete",
+    "name": "Niemiecki – Przedmioty i urządzenia",
+    "emoji": "🔧",
+    "desc": "Wynalazki, sprzęt domowy, narzędzia",
+    "file": "data/niemiecki-geraete.json",
+    "lang": "de",
+    "question": "Przetłumacz na niemiecki"
+  }
 ]
