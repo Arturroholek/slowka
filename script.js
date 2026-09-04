@@ -16,6 +16,35 @@ function shuffle(arr){
   return a;
 }
 
+// Normalizuje tekst: usuwa przecinki, ujednolica ukośniki i spacje
+function normAnswer(s){
+  return s.toLowerCase()
+          .replace(/,/g,' ')
+          .replace(/\s*\/\s*/g,'/')
+          .replace(/\s+/g,' ')
+          .trim();
+}
+
+// Buduje zbiór akceptowanych odpowiedzi z pola "en".
+// Dla "be, was/were, been" akceptuje m.in.:
+//   "be was/were been", "be was been", "be were been"
+function acceptableAnswers(en){
+  var set={};
+  set[normAnswer(en)]=true;                 // pełna forma z ukośnikami
+  var forms=en.split(',').map(function(f){return f.trim();});
+  var combos=[''];
+  for(var i=0;i<forms.length;i++){
+    var alts=forms[i].split('/').map(function(a){return a.trim();});
+    var next=[];
+    for(var c=0;c<combos.length;c++)
+      for(var a=0;a<alts.length;a++)
+        next.push(combos[c]+(combos[c]?' ':'')+alts[a]);
+    combos=next;
+  }
+  for(var k=0;k<combos.length;k++) set[normAnswer(combos[k])]=true;
+  return set;
+}
+
 function showScreen(id){
   var ids=['screenSubject','screenPicker','screenQuiz','screenResults'];
   for(var i=0;i<ids.length;i++){
@@ -211,13 +240,12 @@ function renderQuestion(){
 function check(){
   if(answered)return;
   var inp=document.getElementById('answerInput');
-  var val=inp.value.trim().toLowerCase();
+  var val=inp.value.trim();
   if(!val)return;
   answered=true;
 
-  var correct=queue[current].en.toLowerCase();
-  var variants=correct.split('/').map(function(v){return v.trim();});
-  var isCorrect=variants.indexOf(val)!==-1;
+  var acc=acceptableAnswers(queue[current].en);
+  var isCorrect=acc[normAnswer(val)]===true;
 
   inp.disabled=true;
   var fb=document.getElementById('feedback');
