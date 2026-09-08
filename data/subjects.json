@@ -97,5 +97,14 @@
     "file": "data/niemiecki-geraete.json",
     "lang": "de",
     "question": "Przetłumacz na niemiecki"
+  },
+  {
+    "id": "slownictwo-repetytorium-1",
+    "name": "Angielski – Repetytorium, część 1",
+    "emoji": "🔧",
+    "desc": "Cechy charakteru, dane personalne, wygląd",
+    "file": "data/slownictwo-repetytorium-1.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
   }
 ]
