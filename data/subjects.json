@@ -1,4 +1,21 @@
-[
+[ {
+    "id": "slownictwo-repetytorium-1",
+    "name": "Angielski – Repetytorium, część 1",
+    "emoji": "🐎",
+    "desc": "Cechy charakteru, dane personalne, wygląd",
+    "file": "data/slownictwo-repetytorium-1.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
+  },
+    {
+    "id": "irregular-verbs",
+    "name": "Angielski - Czasowniki nieregularne",
+    "emoji": "🐸",
+    "desc": "Czasowniki nieregularne w pierwszej, drugiej i trzeciej formie",
+    "file": "data/irregular-verbs.json",
+    "lang": "en",
+    "question": "Wpisz 3 formy"
+  },
   {
     "id": "angielski-sport",
     "name": "Angielski – Sport",
@@ -54,15 +71,6 @@
     "question": "Podaj odpowiedź"
   },
     {
-    "id": "irregular-verbs",
-    "name": "Angielski - Czasowniki nieregularne",
-    "emoji": "🐸",
-    "desc": "Czasowniki nieregularne w pierwszej, drugiej i trzeciej formie",
-    "file": "data/irregular-verbs.json",
-    "lang": "en",
-    "question": "Wpisz 3 formy"
-  },
-    {
     "id": "kapitel-1",
     "name": "Niemiecki - Wort Effektiv",
     "emoji": "🐎",
@@ -97,14 +105,5 @@
     "file": "data/niemiecki-geraete.json",
     "lang": "de",
     "question": "Przetłumacz na niemiecki"
-  },
-  {
-    "id": "slownictwo-repetytorium-1",
-    "name": "Angielski – Repetytorium, część 1",
-    "emoji": "🔧",
-    "desc": "Cechy charakteru, dane personalne, wygląd",
-    "file": "data/slownictwo-repetytorium-1.json",
-    "lang": "en",
-    "question": "Przetłumacz na angielski"
   }
 ]
