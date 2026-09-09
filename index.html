@@ -37,10 +37,16 @@
     <!-- SCREEN 2: CATEGORY PICKER -->
     <div id="screenPicker" class="screen">
       <button class="section-back" id="backToSubjects">← Działy</button>
-      <p class="picker-title" id="pickerTitle">Wybierz kategorię</p>
-      <p class="picker-subtitle" id="pickerSubtitle">lub zagraj wszystkie naraz</p>
+      <div class="picker-head-row">
+        <div class="picker-head-text">
+          <p class="picker-title" id="pickerTitle">Wybierz kategorię</p>
+          <p class="picker-subtitle" id="pickerSubtitle">lub zagraj wszystkie naraz</p>
+        </div>
+        <button class="multi-toggle" id="multiToggle">☑ Wybierz kilka</button>
+      </div>
       <div class="cat-grid" id="catGrid"></div>
       <button class="all-btn" id="allBtn">▶ Wszystkie słówka</button>
+      <button class="start-selected-btn" id="startSelectedBtn">▶ Graj wybrane (0)</button>
     </div>
 
     <!-- SCREEN 3: QUIZ -->
