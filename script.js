@@ -9,6 +9,10 @@ var queue = [], wrongQueue = [], historyBits = [];
 var current = 0, sessionCorrect = 0, sessionTotal = 0;
 var answered = false, activeCategory = null;
 
+// multi-select
+var selectMode = false;
+var selectedCats = {};
+
 // ─── HELPERS ─────────────────────────────────────────────
 function shuffle(arr){
   var a=arr.slice();
@@ -26,11 +30,9 @@ function normAnswer(s){
 }
 
 // Buduje zbiór akceptowanych odpowiedzi z pola "en".
-// Dla "be, was/were, been" akceptuje m.in.:
-//   "be was/were been", "be was been", "be were been"
 function acceptableAnswers(en){
   var set={};
-  set[normAnswer(en)]=true;                 // pełna forma z ukośnikami
+  set[normAnswer(en)]=true;
   var forms=en.split(',').map(function(f){return f.trim();});
   var combos=[''];
   for(var i=0;i<forms.length;i++){
@@ -53,7 +55,6 @@ function showScreen(id){
   document.getElementById('progressLabel').textContent='';
   document.getElementById('progressFill').style.width='0%';
   document.getElementById('scoreDisplay').textContent='0';
-  // hide umlaut bar when leaving quiz
   if(id !== 'screenQuiz') document.getElementById('umlautBar').className='umlaut-bar';
 }
 
@@ -61,7 +62,6 @@ function showScreen(id){
 var umlautBar = document.getElementById('umlautBar');
 var answerInput = document.getElementById('answerInput');
 
-// Show/hide bar based on active subject language
 function updateUmlautBar(){
   if(activeSubject && activeSubject.lang === 'de'){
     umlautBar.className = 'umlaut-bar visible';
@@ -70,17 +70,15 @@ function updateUmlautBar(){
   }
 }
 
-// Insert character at cursor position
 umlautBar.addEventListener('mousedown', function(e){
   var btn = e.target.closest('.umlaut-btn');
   if(!btn) return;
-  e.preventDefault(); // prevent input from losing focus
+  e.preventDefault();
   var ch = btn.getAttribute('data-char');
   var start = answerInput.selectionStart;
   var end = answerInput.selectionEnd;
   var val = answerInput.value;
   answerInput.value = val.slice(0, start) + ch + val.slice(end);
-  // move cursor after inserted char
   answerInput.selectionStart = answerInput.selectionEnd = start + ch.length;
   answerInput.focus();
 });
@@ -159,9 +157,17 @@ function buildCategoryData(){
 // ─── CATEGORY PICKER ─────────────────────────────────────
 function showPicker(){
   showScreen('screenPicker');
+  // reset trybu wyboru za każdym wejściem
+  selectMode = false;
+  selectedCats = {};
+  var mt = document.getElementById('multiToggle');
+  mt.className = 'multi-toggle';
+  mt.textContent = '☑ Wybierz kilka';
+
   document.getElementById('pickerTitle').textContent = activeSubject.name;
   document.getElementById('pickerSubtitle').textContent = activeSubject.desc;
   document.getElementById('cardHint').textContent = activeSubject.question;
+  updateStartSelectedBtn();
   renderCatGrid();
 }
 
@@ -171,7 +177,8 @@ function renderCatGrid(){
     var cat=categoryOrder[i];
     var d=catData[cat];
     var pill=d.done?'<span class="cat-score-pill">'+d.correct+'/'+d.total+'</span>':'';
-    html+='<button class="cat-btn'+(d.done?' done':'')+'" data-cat="'+i+'">'
+    var sel=(selectMode && selectedCats[cat])?' selected':'';
+    html+='<button class="cat-btn'+(d.done?' done':'')+sel+'" data-cat="'+i+'">'
         +'<span class="cat-name">'+cat+pill+'</span>'
         +'<span class="cat-meta">'+d.total+' słów'+(d.done?' · ukończone':'')+'</span>'
         +'</button>';
@@ -181,10 +188,52 @@ function renderCatGrid(){
   var btns=grid.querySelectorAll('.cat-btn');
   for(var i=0;i<btns.length;i++){
     btns[i].addEventListener('click',function(){
-      startQuiz(categoryOrder[parseInt(this.getAttribute('data-cat'))]);
+      var cat=categoryOrder[parseInt(this.getAttribute('data-cat'))];
+      if(selectMode){
+        if(selectedCats[cat]) delete selectedCats[cat];
+        else selectedCats[cat]=true;
+        renderCatGrid();
+        updateStartSelectedBtn();
+      } else {
+        startQuiz(cat);
+      }
     });
   }
 }
+
+function updateStartSelectedBtn(){
+  var btn=document.getElementById('startSelectedBtn');
+  var allBtn=document.getElementById('allBtn');
+  var count=Object.keys(selectedCats).length;
+  if(selectMode){
+    allBtn.style.display='none';
+    if(count>0){
+      btn.className='start-selected-btn show';
+      btn.textContent='▶ Graj wybrane ('+count+')';
+    } else {
+      btn.className='start-selected-btn show disabled';
+      btn.textContent='Zaznacz kategorie…';
+    }
+  } else {
+    allBtn.style.display='';
+    btn.className='start-selected-btn';
+  }
+}
+
+document.getElementById('multiToggle').addEventListener('click',function(){
+  selectMode=!selectMode;
+  selectedCats={};
+  this.className='multi-toggle'+(selectMode?' active':'');
+  this.textContent=selectMode?'✕ Anuluj':'☑ Wybierz kilka';
+  renderCatGrid();
+  updateStartSelectedBtn();
+});
+
+document.getElementById('startSelectedBtn').addEventListener('click',function(){
+  var cats=Object.keys(selectedCats);
+  if(cats.length===0) return;
+  startQuiz(cats.length===1?cats[0]:cats);
+});
 
 document.getElementById('allBtn').addEventListener('click',function(){ startQuiz('__all__'); });
 document.getElementById('backToSubjects').addEventListener('click',function(){
@@ -197,16 +246,29 @@ document.getElementById('logoBtn').addEventListener('click',function(){
 });
 
 // ─── QUIZ ─────────────────────────────────────────────────
+function catLabel(category){
+  if(category==='__all__') return 'Wszystkie';
+  if(Array.isArray(category)) return category.join(' + ');
+  return category;
+}
+
 function startQuiz(category){
   activeCategory=category;
-  var pool=category==='__all__'?words:words.filter(function(w){return w.cat===category;});
+  var pool;
+  if(category==='__all__'){
+    pool=words;
+  } else if(Array.isArray(category)){
+    pool=words.filter(function(w){return category.indexOf(w.cat)!==-1;});
+  } else {
+    pool=words.filter(function(w){return w.cat===category;});
+  }
   queue=shuffle(pool);
   wrongQueue=[];historyBits=[];
   current=0;sessionCorrect=0;sessionTotal=queue.length;answered=false;
 
   showScreen('screenQuiz');
   updateUmlautBar();
-  document.getElementById('quizCatName').textContent=category==='__all__'?'Wszystkie':category;
+  document.getElementById('quizCatName').textContent=catLabel(category);
   document.getElementById('roundBadge').style.display='none';
   renderQuestion();
 }
@@ -288,7 +350,9 @@ function startRetryRound(){
 }
 
 function showResults(){
-  if(activeCategory!=='__all__'){
+  // zapisz wynik tylko dla pojedynczej kategorii (nie miks, nie "wszystkie")
+  var isSingle=(activeCategory!=='__all__' && !Array.isArray(activeCategory));
+  if(isSingle){
     catData[activeCategory].correct=sessionCorrect;
     catData[activeCategory].total=sessionTotal;
     catData[activeCategory].done=true;
@@ -296,12 +360,12 @@ function showResults(){
   showScreen('screenResults');
   var pct=Math.round(sessionCorrect/sessionTotal*100);
   document.getElementById('resultsEmoji').textContent=pct>=80?'🏆':pct>=50?'💪':'📚';
-  document.getElementById('resultsCat').textContent=activeCategory==='__all__'?'Wszystkie słówka':activeCategory;
+  document.getElementById('resultsCat').textContent=catLabel(activeCategory);
   document.getElementById('finalScore').textContent=sessionCorrect+' / '+sessionTotal;
   document.getElementById('resultsDetail').textContent='Wynik: '+pct+'% — '+(pct>=80?'Znakomity wynik! 🔥':pct>=50?'Nieźle, ćwicz dalej!':'Więcej nauki i do przodu!');
 
   var nextCat=null;
-  if(activeCategory!=='__all__'){
+  if(isSingle){
     var idx=categoryOrder.indexOf(activeCategory);
     if(idx>=0&&idx<categoryOrder.length-1) nextCat=categoryOrder[idx+1];
   }
