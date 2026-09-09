@@ -66,22 +66,67 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 }
 .section-back:hover{color:var(--text)}
 
+/* nagłówek pickera z przyciskiem "Wybierz kilka" */
+.picker-head-row{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+}
+.picker-head-text{min-width:0}
+.multi-toggle{
+  flex-shrink:0;
+  font-family:'DM Mono',monospace;font-size:.72rem;
+  padding:9px 14px;border-radius:999px;
+  border:1.5px solid var(--border);background:var(--card);color:var(--muted);
+  cursor:pointer;white-space:nowrap;
+  transition:border-color .2s,background .2s,color .2s;
+}
+.multi-toggle:hover{border-color:var(--accent);color:var(--text)}
+.multi-toggle.active{
+  background:var(--accent);border-color:var(--accent);color:#fff;
+}
+
 .cat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
 .cat-btn{
   background:var(--card);border:2px solid var(--border);border-radius:14px;
-  padding:15px 14px;cursor:pointer;text-align:left;
+  padding:15px 14px;cursor:pointer;text-align:left;position:relative;
   transition:border-color .2s,background .2s,transform .1s;color:var(--text)
 }
 .cat-btn:hover{border-color:var(--accent);background:rgba(255,107,53,.06)}
 .cat-btn:active{transform:scale(.97)}
 .cat-btn.done{border-color:var(--correct);background:rgba(168,255,120,.05)}
 .cat-btn.done .cat-name{color:var(--correct)}
+.cat-btn.selected{
+  border-color:var(--accent);
+  background:rgba(255,107,53,.12);
+  box-shadow:0 0 0 2px var(--accent) inset;
+}
+.cat-btn.selected .cat-name{color:var(--accent)}
+.cat-btn.selected::after{
+  content:'✓';position:absolute;top:8px;right:10px;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:.8rem;color:var(--accent);
+}
 .cat-name{font-weight:800;font-size:.9rem;display:block;margin-bottom:4px}
 .cat-meta{font-family:'DM Mono',monospace;font-size:.63rem;color:var(--muted)}
 .cat-score-pill{font-family:'DM Mono',monospace;font-size:.6rem;background:rgba(168,255,120,.15);color:var(--correct);padding:1px 6px;border-radius:10px;margin-left:5px}
 .all-btn{width:100%;font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;background:var(--accent);color:#fff;border:none;padding:14px;border-radius:14px;cursor:pointer;transition:background .2s,transform .1s;margin-top:4px}
 .all-btn:hover{background:#ff8354}
 .all-btn:active{transform:scale(.98)}
+
+/* przycisk "Graj wybrane" */
+.start-selected-btn{
+  display:none;width:100%;margin-top:10px;padding:15px;
+  font-family:'Syne',sans-serif;font-weight:800;font-size:.95rem;
+  border:none;border-radius:14px;background:var(--accent);color:#fff;
+  cursor:pointer;transition:background .2s,transform .1s,opacity .2s;
+}
+.start-selected-btn.show{display:block;animation:fadeIn .2s ease}
+.start-selected-btn:hover{background:#ff8354}
+.start-selected-btn:active{transform:scale(.98)}
+.start-selected-btn.disabled{
+  background:var(--card);color:var(--muted);
+  border:2px solid var(--border);cursor:not-allowed;
+}
+.start-selected-btn.disabled:hover{background:var(--card)}
+.start-selected-btn.disabled:active{transform:none}
 
 /* CARD */
 .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:22px 18px;position:relative;overflow:hidden}
