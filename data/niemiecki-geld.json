@@ -1,0 +1,31 @@
+[
+  {"pl":"gotówka", "en":"das Bargeld", "cat":"Płacić gotówką"},
+  {"pl":"drobne pieniądze", "en":"das Kleingeld", "cat":"Płacić gotówką"},
+  {"pl":"reszta (pieniądze)", "en":"das Rückgeld", "cat":"Płacić gotówką"},
+  {"pl":"potrzebować", "en":"brauchen", "cat":"Płacić gotówką"},
+  {"pl":"płacić gotówką", "en":"bar zahlen", "cat":"Płacić gotówką"},
+
+  {"pl":"zbliżeniowo", "en":"kontaktlos", "cat":"Płacić kartą"},
+  {"pl":"wprowadzać", "en":"eingeben", "cat":"Płacić kartą"},
+  {"pl":"naciskać klawisz", "en":"auf die Taste drücken", "cat":"Płacić kartą"},
+
+  {"pl":"bankomat", "en":"der Geldautomat", "cat":"Oferty bankowe"},
+  {"pl":"prowadzenie konta", "en":"die Kontoführung", "cat":"Oferty bankowe"},
+  {"pl":"dowód osobisty", "en":"der Personalausweis", "cat":"Oferty bankowe"},
+  {"pl":"konto oszczędnościowe", "en":"das Sparkonto", "cat":"Oferty bankowe"},
+  {"pl":"podpis", "en":"die Unterschrift", "cat":"Oferty bankowe"},
+  {"pl":"podejmować (pieniądze)", "en":"abheben", "cat":"Oferty bankowe"},
+  {"pl":"otwierać (konto)", "en":"eröffnen", "cat":"Oferty bankowe"},
+  {"pl":"dostać kartę płatniczą", "en":"eine Bankkarte bekommen", "cat":"Oferty bankowe"},
+
+  {"pl":"kwota", "en":"der Betrag", "cat":"Przy bankomacie"},
+  {"pl":"numer PIN", "en":"die Geheimzahl", "cat":"Przy bankomacie"},
+  {"pl":"potwierdzać", "en":"bestätigen", "cat":"Przy bankomacie"},
+  {"pl":"wziąć, odebrać", "en":"entnehmen", "cat":"Przy bankomacie"},
+
+  {"pl":"długi", "en":"die Schulden", "cat":"Wokół pieniędzy"},
+  {"pl":"kieszonkowe", "en":"das Taschengeld", "cat":"Wokół pieniędzy"},
+  {"pl":"wydawać", "en":"ausgeben", "cat":"Wokół pieniędzy"},
+  {"pl":"obchodzić się", "en":"umgehen", "cat":"Wokół pieniędzy"},
+  {"pl":"zarabiać", "en":"verdienen", "cat":"Wokół pieniędzy"},
+]
