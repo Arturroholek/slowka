@@ -17,6 +17,15 @@
     "question": "Wpisz 3 formy"
   },
   {
+    "id": "niemiecki-geld",
+    "name": "Niemiecki – Pieniądze",
+    "emoji": "💰",
+    "desc": "Pieniądze, oferty bankowe, płatność kartą",
+    "file": "data/niemiecki-geld.json",
+    "lang": "de",
+    "question": "Przetłumacz na niemiecki"
+  },
+  {
     "id": "angielski-sport",
     "name": "Angielski – Sport",
     "emoji": "⚽",
