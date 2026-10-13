@@ -114,5 +114,15 @@
     "file": "data/niemiecki-geraete.json",
     "lang": "de",
     "question": "Przetłumacz na niemiecki"
+  },
+  {
+    "id": "angielski-nauka-technika",
+    "name": "Angielski – Nauka i technika",
+    "emoji": "🔬",
+    "desc": "Badania naukowe, wynalazki, obsługa urządzeń technicznych",
+    "file": "data/angielski-nauka-technika.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
   }
+
 ]
