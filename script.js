@@ -9,6 +9,15 @@ var queue = [], wrongQueue = [], historyBits = [];
 var current = 0, sessionCorrect = 0, sessionTotal = 0;
 var answered = false, activeCategory = null;
 
+// cooldown chroniący przed przypadkowym podwójnym kliknięciem / Enterem
+var ACTION_COOLDOWN = 600, lastActionTime = 0;
+function onCooldown(){
+  var now=Date.now();
+  if(now-lastActionTime<ACTION_COOLDOWN)return true;
+  lastActionTime=now;
+  return false;
+}
+
 // multi-select
 var selectMode = false;
 var selectedCats = {};
@@ -301,13 +310,14 @@ function renderQuestion(){
 
 function check(){
   if(answered)return;
+  if(onCooldown())return;
   var inp=document.getElementById('answerInput');
   var val=inp.value.trim();
-  if(!val)return;
   answered=true;
 
+  // puste pole = "nie wiem" -> liczone jako błędna odpowiedź
   var acc=acceptableAnswers(queue[current].en);
-  var isCorrect=acc[normAnswer(val)]===true;
+  var isCorrect=!!val&&acc[normAnswer(val)]===true;
 
   inp.disabled=true;
   var fb=document.getElementById('feedback');
@@ -330,6 +340,8 @@ function check(){
 }
 
 function next(){
+  if(!answered)return;
+  if(onCooldown())return;
   current++;
   if(current>=queue.length){
     if(wrongQueue.length>0) startRetryRound();
