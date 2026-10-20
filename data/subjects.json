@@ -24,6 +24,15 @@
     "file": "data/niemiecki-geld.json",
     "lang": "de",
     "question": "Przetłumacz na niemiecki"
+  } ,
+  {
+    "id": "angielski-dom",
+    "name": "Angielski – Dom i okolice",
+    "emoji": "🏡",
+    "desc": "Rodzaje domów, pomieszczenia i wyposażenie",
+    "file": "data/angielski-dom.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
   },
   {
     "id": "angielski-sport",
