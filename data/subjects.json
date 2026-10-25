@@ -53,6 +53,15 @@
     "question": "Przetłumacz na angielski"
   },
   {
+    "id": "angielski-na-pewno-nie",
+    "name": "Angielski – Na pewno nie",
+    "emoji": "👎",
+    "desc": "Nie mam pomysłu na opis",
+    "file": "data/angielski-na-pewno-nie.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
+  },
+  {
     "id": "niemiecki-einkaufen",
     "name": "Niemiecki – Einkaufen",
     "emoji": "🛍️",
