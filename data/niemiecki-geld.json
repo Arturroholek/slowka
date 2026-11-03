@@ -6,7 +6,7 @@
   {"pl":"płacić gotówką", "en":"bar zahlen", "cat":"Płacić gotówką"},
   {"pl":"das Bargeld", "en":"gotówka", "cat":"Płacić gotówką"},
   {"pl":"das Kleingeld", "en":"drobne pieniądze", "cat":"Płacić gotówką"},
-  {"pl":"das Rückgeld", "en":"reszta (pieniądze)", "cat":"Płacić gotówką"},
+  {"pl":"das Rückgeld", "en":"reszta", "cat":"Płacić gotówką"},
   {"pl":"brauchen", "en":"potrzebować", "cat":"Płacić gotówką"},
   {"pl":"bar zahlen", "en":"płacić gotówką", "cat":"Płacić gotówką"},
 
@@ -30,8 +30,8 @@
   {"pl":"der Personalausweis", "en":"dowód osobisty", "cat":"Oferty bankowe"},
   {"pl":"das Sparkonto", "en":"konto oszczędnościowe", "cat":"Oferty bankowe"},
   {"pl":"die Unterschrift", "en":"podpis", "cat":"Oferty bankowe"},
-  {"pl":"abheben", "en":"podejmować (pieniądze)", "cat":"Oferty bankowe"},
-  {"pl":"eröffnen", "en":"otwierać (konto)", "cat":"Oferty bankowe"},
+  {"pl":"abheben", "en":"podejmować", "cat":"Oferty bankowe"},
+  {"pl":"eröffnen", "en":"otwierać", "cat":"Oferty bankowe"},
   {"pl":"eine Bankkarte bekommen", "en":"dostać kartę płatniczą", "cat":"Oferty bankowe"},
 
   {"pl":"kwota", "en":"der Betrag", "cat":"Przy bankomacie"},
