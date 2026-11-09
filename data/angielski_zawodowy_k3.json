@@ -1,0 +1,197 @@
+[
+  {
+    "pl": "włożyć/wymienić/wyrzucić baterię/pojemnik z tuszem",
+    "en": "insert/replace/dispose of batteries/the ink cartridge",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "instrukcja obsługi",
+    "en": "instruction/reference/user manual/guide",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wtyczka",
+    "en": "plug",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "przywrócić czemuś ustawienia fabryczne",
+    "en": "return/restore sth to factory settings",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "skonfigurować",
+    "en": "set up",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "gniazdko elektryczne",
+    "en": "socket/power point/outlet",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "zapisać kopię zapasową czegoś w chmurze",
+    "en": "back sth up to the cloud",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "dodać stronę do zakładek",
+    "en": "bookmark a site",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "uruchomić/zrestartować komputer",
+    "en": "boot (up)/reboot a PC",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "znak (np. litera, cyfra)",
+    "en": "character",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "zredagować wiadomość",
+    "en": "compose a message",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "potwierdzić hasło",
+    "en": "confirm your password",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "dostosować pasek narzędzi",
+    "en": "customise your toolbar",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "zużycie danych",
+    "en": "data usage",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "okno dialogowe",
+    "en": "dialogue box",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "włączyć uwierzytelnianie dwuetapowe",
+    "en": "enable two-factor authentication",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "szyfrować informacje",
+    "en": "encrypt information",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "rozpoznawanie twarzy",
+    "en": "face/facial recognition",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "oflagować wiadomość",
+    "en": "flag an email",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wysoka/niska rozdzielczość",
+    "en": "high/low resolution",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "zwiększyć/zmniejszyć czcionkę",
+    "en": "increase/decrease font size",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wstawić tabelę/schemat",
+    "en": "insert a table/diagram",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "instalować/odinstalowywać aplikacje",
+    "en": "install/uninstall apps",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "dostawca Internetu",
+    "en": "Internet provider",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "skróty klawiszowe",
+    "en": "keyboard shortcuts",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wczytać, załadować się",
+    "en": "load",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "ogromna pojemność pamięci",
+    "en": "massive storage capacity",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wyciszyć/wyłączyć wyciszenie",
+    "en": "mute/unmute",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "poruszać się po dokumencie/stronie internetowej",
+    "en": "navigate a document/website",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "oprogramowanie do edycji zdjęć",
+    "en": "photo editing software",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "orientacja pionowa/pozioma",
+    "en": "portrait/landscape orientation",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "funkcja przewidywania wprowadzanego tekstu",
+    "en": "predictive text",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "blokada ekranu",
+    "en": "screen lock",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "przewinąć coś w górę/w dół",
+    "en": "scroll through/up/down",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "filtr antyspamowy",
+    "en": "spam filter",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "arkusz kalkulacyjny",
+    "en": "spreadsheet",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "wyłączyć roaming danych",
+    "en": "switch off data roaming",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "szkło hartowane na ekran",
+    "en": "tempered glass screen protector",
+    "cat": "AngZawKol2"
+  },
+  {
+    "pl": "funkcja zamiany tekstu na mowę",
+    "en": "text-to-speech feature",
+    "cat": "AngZawKol2"
+  }
+]

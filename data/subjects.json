@@ -141,6 +141,14 @@
     "file": "data/angielski-nauka-technika.json",
     "lang": "en",
     "question": "Przetłumacz na angielski"
+  },
+  {
+  "id": "angielski-zawodowy-kol3",
+  "name": "Angielski zawodowy – Kol3",
+  "emoji": "🖥️",
+  "desc": "Komputery i Smartfony itp itd",
+  "file": "data/angielski_zawodowy_k3.json",
+  "lang": "en",
+  "question": "Przetłumacz na angielski"
   }
-
 ]
