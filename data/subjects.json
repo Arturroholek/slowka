@@ -6,7 +6,16 @@
     "file": "data/slownictwo-repetytorium-1.json",
     "lang": "en",
     "question": "Przetłumacz na angielski"
-  },
+  }, 
+  {
+    "id": "slownictwo-kupa",
+    "name": "Angielski – Kupa, część 67",
+    "emoji": "👾",
+    "desc": "Kiwi kiwi kiwi",
+    "file": "data/slowka_unit3.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
+   },
     {
     "id": "irregular-verbs",
     "name": "Angielski - Czasowniki nieregularne",
