@@ -46,6 +46,7 @@
       </div>
       <div class="cat-grid" id="catGrid"></div>
       <button class="all-btn" id="allBtn">▶ Wszystkie słówka</button>
+      <button class="hard-btn" id="hardBtn">★ Trudne słówka (0)</button>
       <button class="start-selected-btn" id="startSelectedBtn">▶ Graj wybrane (0)</button>
     </div>
 
@@ -54,7 +55,10 @@
       <div class="card">
         <div class="quiz-cat-header">
           <span class="quiz-cat-label">Kategoria</span>
-          <span class="quiz-cat-name" id="quizCatName"></span>
+          <div class="quiz-cat-right">
+            <span class="quiz-cat-name" id="quizCatName"></span>
+            <button class="star-btn" id="starBtn" title="Dodaj do trudnych słówek" aria-label="Dodaj do trudnych słówek">☆</button>
+          </div>
         </div>
         <div id="roundBadge" class="round-badge" style="display:none">Powtórka błędów</div>
         <div class="card-hint" id="cardHint">Przetłumacz</div>

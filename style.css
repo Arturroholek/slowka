@@ -135,7 +135,31 @@ header{display:flex;align-items:center;justify-content:space-between;margin-bott
 
 .quiz-cat-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
 .quiz-cat-label{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.quiz-cat-name{font-size:.9rem;font-weight:800;color:var(--accent);text-align:right;max-width:60%;word-break:break-word}
+.quiz-cat-name{font-size:.9rem;font-weight:800;color:var(--accent);text-align:right;word-break:break-word}
+.quiz-cat-right{display:flex;align-items:center;gap:10px;max-width:70%;justify-content:flex-end}
+
+/* ── TRUDNE SŁÓWKA ── */
+.star-btn{
+  flex-shrink:0;width:36px;height:36px;border-radius:50%;
+  background:var(--surface);border:1.5px solid var(--border);color:var(--muted);
+  font-size:1.15rem;line-height:1;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;
+  transition:border-color .2s,color .2s,background .2s,transform .15s;
+}
+.star-btn:hover{border-color:#ffd166;color:#ffd166}
+.star-btn:active{transform:scale(.88)}
+.star-btn.on{color:#ffd166;border-color:#ffd166;background:rgba(255,209,102,.12)}
+.hard-btn{
+  width:100%;margin-top:10px;padding:14px;
+  font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;
+  background:transparent;color:#ffd166;border:2px solid rgba(255,209,102,.45);
+  border-radius:14px;cursor:pointer;transition:background .2s,border-color .2s,transform .1s;
+}
+.hard-btn:hover{background:rgba(255,209,102,.08);border-color:#ffd166}
+.hard-btn:active{transform:scale(.98)}
+.hard-btn.disabled{color:var(--muted);border-color:var(--border);cursor:not-allowed}
+.hard-btn.disabled:hover{background:transparent}
+.hard-btn.disabled:active{transform:none}
 
 .round-badge{font-family:'DM Mono',monospace;font-size:.65rem;color:var(--wrong);background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.2);padding:2px 8px;border-radius:10px;display:inline-block;margin-bottom:10px}
 

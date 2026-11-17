@@ -22,6 +22,42 @@ function onCooldown(){
 var selectMode = false;
 var selectedCats = {};
 
+// ─── TRUDNE SŁÓWKA (localStorage) ────────────────────────
+// struktura: { "<id działu>": ["pl|en", ...], ... }
+var HARD_KEY = 'slowka-trudne';
+
+function loadHardAll(){
+  try{
+    var raw=localStorage.getItem(HARD_KEY);
+    var obj=raw?JSON.parse(raw):{};
+    return (obj && typeof obj==='object')?obj:{};
+  }catch(e){ return {}; }
+}
+function saveHardAll(obj){
+  try{ localStorage.setItem(HARD_KEY, JSON.stringify(obj)); }catch(e){}
+}
+function subjectKey(){ return activeSubject ? (activeSubject.id || activeSubject.file) : ''; }
+function wordKey(w){ return w.pl+'|'+w.en; }
+
+function isHard(w){
+  var list=loadHardAll()[subjectKey()]||[];
+  return list.indexOf(wordKey(w))!==-1;
+}
+function toggleHard(w){
+  var all=loadHardAll(), key=subjectKey();
+  var list=all[key]||[];
+  var k=wordKey(w), i=list.indexOf(k);
+  if(i===-1) list.push(k); else list.splice(i,1);
+  if(list.length) all[key]=list; else delete all[key];
+  saveHardAll(all);
+  return i===-1;
+}
+// tylko słówka, które nadal istnieją w pliku działu
+function hardWords(){
+  var list=loadHardAll()[subjectKey()]||[];
+  return words.filter(function(w){ return list.indexOf(wordKey(w))!==-1; });
+}
+
 // ─── HELPERS ─────────────────────────────────────────────
 function shuffle(arr){
   var a=arr.slice();
@@ -214,6 +250,7 @@ function updateStartSelectedBtn(){
   var btn=document.getElementById('startSelectedBtn');
   var allBtn=document.getElementById('allBtn');
   var count=Object.keys(selectedCats).length;
+  updateHardBtn();
   if(selectMode){
     allBtn.style.display='none';
     if(count>0){
@@ -244,7 +281,19 @@ document.getElementById('startSelectedBtn').addEventListener('click',function(){
   startQuiz(cats.length===1?cats[0]:cats);
 });
 
+function updateHardBtn(){
+  var btn=document.getElementById('hardBtn');
+  var n=hardWords().length;
+  btn.style.display=selectMode?'none':'';
+  btn.className='hard-btn'+(n===0?' disabled':'');
+  btn.textContent=n===0?'☆ Trudne słówka — oznacz gwiazdką w quizie':'★ Trudne słówka ('+n+')';
+}
+
 document.getElementById('allBtn').addEventListener('click',function(){ startQuiz('__all__'); });
+document.getElementById('hardBtn').addEventListener('click',function(){
+  if(hardWords().length===0) return;
+  startQuiz('__hard__');
+});
 document.getElementById('backToSubjects').addEventListener('click',function(){
   showScreen('screenSubject');
   renderSubjectGrid();
@@ -257,6 +306,7 @@ document.getElementById('logoBtn').addEventListener('click',function(){
 // ─── QUIZ ─────────────────────────────────────────────────
 function catLabel(category){
   if(category==='__all__') return 'Wszystkie';
+  if(category==='__hard__') return '★ Trudne słówka';
   if(Array.isArray(category)) return category.join(' + ');
   return category;
 }
@@ -266,6 +316,9 @@ function startQuiz(category){
   var pool;
   if(category==='__all__'){
     pool=words;
+  } else if(category==='__hard__'){
+    pool=hardWords();
+    if(pool.length===0){ showPicker(); return; }
   } else if(Array.isArray(category)){
     pool=words.filter(function(w){return category.indexOf(w.cat)!==-1;});
   } else {
@@ -289,6 +342,7 @@ function renderQuestion(){
   var wd=document.getElementById('wordDisplay');
   wd.textContent=w.pl;
   wd.className='word-display'+(w.pl.length>16?' vlong':w.pl.length>10?' long':'');
+  updateStarBtn();
 
   var inp=document.getElementById('answerInput');
   inp.value='';inp.className='answer-input';inp.disabled=false;
@@ -307,6 +361,26 @@ function renderQuestion(){
   document.getElementById('streaks').innerHTML=html;
   setTimeout(function(){document.getElementById('answerInput').focus();},80);
 }
+
+function updateStarBtn(){
+  var btn=document.getElementById('starBtn');
+  var w=queue[current];
+  var on=!!w&&isHard(w);
+  btn.className='star-btn'+(on?' on':'');
+  btn.textContent=on?'★':'☆';
+  var t=on?'Usuń z trudnych słówek':'Dodaj do trudnych słówek';
+  btn.title=t;btn.setAttribute('aria-label',t);
+}
+
+var starBtn=document.getElementById('starBtn');
+// mousedown + preventDefault: nie zabiera fokusu z pola odpowiedzi
+starBtn.addEventListener('mousedown',function(e){ e.preventDefault(); });
+starBtn.addEventListener('click',function(){
+  var w=queue[current];
+  if(!w) return;
+  toggleHard(w);
+  updateStarBtn();
+});
 
 function check(){
   if(answered)return;
@@ -363,7 +437,7 @@ function startRetryRound(){
 
 function showResults(){
   // zapisz wynik tylko dla pojedynczej kategorii (nie miks, nie "wszystkie")
-  var isSingle=(activeCategory!=='__all__' && !Array.isArray(activeCategory));
+  var isSingle=(activeCategory!=='__all__' && activeCategory!=='__hard__' && !Array.isArray(activeCategory));
   if(isSingle){
     catData[activeCategory].correct=sessionCorrect;
     catData[activeCategory].total=sessionTotal;
