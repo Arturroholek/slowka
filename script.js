@@ -307,8 +307,15 @@ document.getElementById('logoBtn').addEventListener('click',function(){
 function catLabel(category){
   if(category==='__all__') return 'Wszystkie';
   if(category==='__hard__') return '★ Trudne słówka';
-  if(Array.isArray(category)) return category.join(' + ');
+  if(Array.isArray(category)){
+    if(category.length<=2) return category.join(' + ');
+    return category[0]+' + '+(category.length-1)+' innych';
+  }
   return category;
+}
+
+function catFullLabel(category){
+  return Array.isArray(category) ? category.join(', ') : catLabel(category);
 }
 
 function startQuiz(category){
@@ -330,7 +337,9 @@ function startQuiz(category){
 
   showScreen('screenQuiz');
   updateUmlautBar();
-  document.getElementById('quizCatName').textContent=catLabel(category);
+  var qcn=document.getElementById('quizCatName');
+  qcn.textContent=catLabel(category);
+  qcn.title=catFullLabel(category);
   document.getElementById('roundBadge').style.display='none';
   renderQuestion();
 }
@@ -446,7 +455,9 @@ function showResults(){
   showScreen('screenResults');
   var pct=Math.round(sessionCorrect/sessionTotal*100);
   document.getElementById('resultsEmoji').textContent=pct>=80?'🏆':pct>=50?'💪':'📚';
-  document.getElementById('resultsCat').textContent=catLabel(activeCategory);
+  var rc=document.getElementById('resultsCat');
+  rc.textContent=catLabel(activeCategory);
+  rc.title=catFullLabel(activeCategory);
   document.getElementById('finalScore').textContent=sessionCorrect+' / '+sessionTotal;
   document.getElementById('resultsDetail').textContent='Wynik: '+pct+'% — '+(pct>=80?'Znakomity wynik! 🔥':pct>=50?'Nieźle, ćwicz dalej!':'Więcej nauki i do przodu!');
 
