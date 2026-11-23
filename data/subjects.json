@@ -1,4 +1,14 @@
-[ {
+[ 
+  {
+    "id": "ang-zaw-k1-s171",
+    "name": "Angielski zawodowy – K1 s.171",
+    "emoji": "🛠️",
+    "desc": "Awarie i problemy techniczne, szanse i zagrożenia technologii",
+    "file": "data/ang_zaw_k1_s171.json",
+    "lang": "en",
+    "question": "Przetłumacz na angielski"
+  },
+  {
     "id": "slownictwo-repetytorium-1",
     "name": "Angielski – Repetytorium, część 1",
     "emoji": "💩",
